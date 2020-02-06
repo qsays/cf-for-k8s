@@ -1,8 +1,8 @@
+#@ load("@ytt:assert", "assert")
 #@ load("@ytt:data", "data")
 #@ load("@ytt:library", "library")
-#@ load("@ytt:template", "template")
 #@ load("@ytt:overlay", "overlay")
-#@ load("@ytt:assert", "assert")
+#@ load("@ytt:template", "template")
 
 #@ def capi_host():
 #@   if len(data.values.capi.database.host) > 0:
