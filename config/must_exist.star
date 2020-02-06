@@ -1,7 +1,8 @@
 load("@ytt:assert", "assert")
+load("@ytt:data", "data")
 
-def must_exist(data_values, data_value_key):
-  value = data_values
+def dv_must_exist(data_value_key):
+  value = data.values
   keys = data_value_key.split(".")
   for key in keys:
     value = getattr(value, key)
