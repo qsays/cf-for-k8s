@@ -76,6 +76,19 @@ packages:
 resource_pool:
   fog_connection:
     endpoint: #@ data.values.capi.blobstore.endpoint
+
+#! TODO: kpack
+#@overlay/match missing_ok=True
+kubernetes:
+  host_url: https://master.default.svc.cluster-domain.example
+  service_account:
+    name: 'fake-opi-service-account'
+    token: 'fake-token'
+  ca_file: "spec/fixtures/certs/kubernetes_ca.crt"
+  kpack:
+    builder_namespace: 'cf-workloads'
+    registry_service_account_name: 'registry-service-account'
+    registry_tag_base: #@ "registry." + data.values.system_domain
 #@ end
 
 #@ def overlay_ccng_config(old, new):
@@ -110,3 +123,20 @@ spec:
         host: #@ "capi." + data.values.system_namespace + ".svc.cluster.local"
         port:
           number: 80
+
+#! TODO: kpack
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: registry-service-account
+  namespace: cf-workloads
+---
+apiVersion: build.pivotal.io/v1alpha1
+kind: Builder
+metadata:
+  name: capi-builder
+  namespace: cf-workloads
+spec:
+  image: cloudfoundry/cnb:bionic
+
