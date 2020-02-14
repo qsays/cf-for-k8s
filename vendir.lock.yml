@@ -6,9 +6,8 @@ directories:
       sha: eacb75b4d562e3fb158eb2147a6768407ab374d4
     path: github.com/GoogleCloudPlatform/metacontroller
   - git:
-      commitTitle: 'ci: enable sidecars on cf-system and metacontroller ns for all
-        envs...'
-      sha: b4375d0b13cb853ee402a9530b54188772c24ff6
+      commitTitle: 'config: update Istio installation YAML...'
+      sha: 18415a4b8de6bd6b6a1cfaec22d44a11a276a089
     path: github.com/cloudfoundry/cf-k8s-networking
   - git:
       commitTitle: delete namespace template...
@@ -23,15 +22,15 @@ directories:
       sha: 5f3af8a7b158c77320c04b45efae99c936ad0a7d
     path: github.com/cloudfoundry/uaa
   - manual: {}
-    path: istio
+    path: docker-registry
   - manual: {}
     path: eirini
+  - manual: {}
+    path: kpack
   - manual: {}
     path: minio
   - manual: {}
     path: postgres
-  - manual: {}
-    path: docker-registry
   path: config/_ytt_lib
 - contents:
   - git:
